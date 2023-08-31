@@ -6,6 +6,7 @@ object Versions {
     val activityCompose = "1.7.1"
 
     val composeBom = "2023.04.01"
+    val composeMaterial3="1.0.0-alpha12"
 
     val junit = "4.13.2"
     val junitAndroid = "1.1.5"
