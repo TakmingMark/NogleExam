@@ -20,7 +20,7 @@ class MarketRepositoryImpl(private val btseApiService: IBtseApiService) : Market
         }
     }
 
-    override suspend fun getSortedFuturePriceNameList(): Flow<List<String>> {
+    override suspend fun getSortedFuturesPriceNameList(): Flow<List<String>> {
         return flow {
             emit(btseApiService
                 .getMarket()

@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 interface MarketRepository {
     suspend fun getSortedSpotPriceNameList(): Flow<List<String>>
 
-    suspend fun getSortedFuturePriceNameList(): Flow<List<String>>
+    suspend fun getSortedFuturesPriceNameList(): Flow<List<String>>
 }

@@ -10,7 +10,7 @@ object Dependencies {
     private val composeUiGraphics = "androidx.compose.ui:ui-graphics"
     private val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
     private val composeMeterial3 = "androidx.compose.material3:material3"
-    private val composeMaterial3Window="androidx.compose.material3:material3-window-size-class"
+    private val composeMaterial3Window = "androidx.compose.material3:material3-window-size-class"
     val composeUiJunitTest = "androidx.compose.ui:ui-test-junit4"
     val composeUiToolingTest = "androidx.compose.ui:ui-tooling"
     val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
@@ -33,8 +33,8 @@ object Dependencies {
     private val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
     private val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
 
-    private val retrofit="com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    private val retrofitGson="com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    private val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    private val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
     val appBaseLibraries = listOf(
         coreKtx,
@@ -47,7 +47,7 @@ object Dependencies {
         composeUiGraphics,
         composeUiToolingPreview,
         composeMeterial3,
-        composeMaterial3Window
+        composeMaterial3Window,
     )
 
     val navigationLibraries = listOf(
@@ -62,7 +62,7 @@ object Dependencies {
         koinCompose
     )
 
-    val retrofitLibraries= listOf(
+    val retrofitLibraries = listOf(
         retrofit,
         retrofitGson
     )
