@@ -1,0 +1,32 @@
+package com.marker.nogle_exam.data.model
+
+data class Data(
+    val active: Boolean,
+    val availableQuotes: List<AvailableQuote>,
+    val baseCurrency: String,
+    val closeTime: Long,
+    val display: Boolean,
+    val displayOrder: Int,
+    val displayQuote: Any,
+    val favorite: Boolean,
+    val fundingRate: Double,
+    val future: Boolean,
+    val globalDisplayQuote: Any,
+    val inactiveTime: Long,
+    val initialMarginPercentage: Double,
+    val isFavorite: Boolean,
+    val lastUpdate: Any,
+    val maintenanceMarginPercentage: Double,
+    val marketClosed: Boolean,
+    val marketName: String,
+    val matchingDisabled: Boolean,
+    val openInterest: Double,
+    val openInterestUSD: Double,
+    val openTime: Long,
+    val prediction: Boolean,
+    val quoteCurrency: String,
+    val sortId: Int,
+    val startMatching: Long,
+    val symbol: String,
+    val timeBasedContract: Boolean
+)

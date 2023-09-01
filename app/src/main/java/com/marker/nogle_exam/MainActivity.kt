@@ -21,10 +21,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.marker.nogle_exam.ui.main.BottomNavItem
 import com.marker.nogle_exam.ui.main.BottomNavigation
-import com.marker.nogle_exam.ui.page.AScreen
 import com.marker.nogle_exam.ui.page.BScreen
 import com.marker.nogle_exam.ui.page.CScreen
 import com.marker.nogle_exam.ui.page.DScreen
+import com.marker.nogle_exam.ui.page.apage.AScreen
 import com.marker.nogle_exam.ui.theme.Nogle_examTheme
 
 class MainActivity : ComponentActivity() {

@@ -33,6 +33,9 @@ object Dependencies {
     private val koinAndroid = "io.insert-koin:koin-android:${Versions.koin}"
     private val koinCompose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
 
+    private val retrofit="com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    private val retrofitGson="com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
     val appBaseLibraries = listOf(
         coreKtx,
         lifecycleRuntimeKtx
@@ -57,5 +60,10 @@ object Dependencies {
     val koinLibraries = listOf(
         koinAndroid,
         koinCompose
+    )
+
+    val retrofitLibraries= listOf(
+        retrofit,
+        retrofitGson
     )
 }

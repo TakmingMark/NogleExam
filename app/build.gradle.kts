@@ -64,6 +64,7 @@ dependencies {
     implementationList(Dependencies.composeLibraries)
     implementationList(Dependencies.navigationLibraries)
     implementationList(Dependencies.koinLibraries)
+    implementationList(Dependencies.retrofitLibraries)
 
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.junitExt)

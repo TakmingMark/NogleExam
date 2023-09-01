@@ -16,4 +16,5 @@ object Versions {
 
     val navigation = "2.5.3"
     val koin = "3.4.0"
+    val retrofit = "2.9.0"
 }
