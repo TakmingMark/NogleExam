@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.marker.nogle_exam"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.marker.nogle_exam"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -74,4 +74,6 @@ dependencies {
     androidTestImplementation(Dependencies.navigationTest)
     debugImplementation(Dependencies.composeUiToolingTest)
     debugImplementation(Dependencies.composeUiTestManifest)
+
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0-alpha01")
 }

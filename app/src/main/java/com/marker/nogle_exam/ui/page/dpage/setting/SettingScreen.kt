@@ -1,5 +1,6 @@
-package com.marker.nogle_exam.ui.page
+package com.marker.nogle_exam.ui.page.dpage.setting
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -9,8 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DScreen() {
+fun SettingScreen(onBackClickedListener: () -> Unit) {
+    BackHandler(enabled = true, onBack = {
+        onBackClickedListener.invoke()
+    })
+
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Test DScreen", fontSize = 24.sp)
+        Text(text = "Test SettingScreen", fontSize = 24.sp)
     }
 }

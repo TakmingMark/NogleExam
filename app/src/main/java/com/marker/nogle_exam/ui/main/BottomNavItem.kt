@@ -1,30 +1,31 @@
 package com.marker.nogle_exam.ui.main
 
 sealed class BottomNavItem(
-    val route: String,
+    val router: ScreenRouter,
     val title: String
 ) {
     object AScreen :
         BottomNavItem(
-            "AScreen",
+            ScreenRouter.AScreen,
             "A Screen"
         )
 
     object BScreen :
         BottomNavItem(
-            "BScreen",
+            ScreenRouter.BScreen,
             "B Screen"
         )
 
     object CScreen :
         BottomNavItem(
-            "CScreen",
+            ScreenRouter.CScreen,
             "C Screen"
         )
 
     object DScreen :
         BottomNavItem(
-            "CScreen",
+            ScreenRouter.DScreen,
             "D Screen"
         )
+
 }

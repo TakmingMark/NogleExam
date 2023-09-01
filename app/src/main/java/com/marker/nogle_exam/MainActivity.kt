@@ -19,12 +19,13 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.marker.nogle_exam.ui.main.BottomNavItem
 import com.marker.nogle_exam.ui.main.BottomNavigation
+import com.marker.nogle_exam.ui.main.ScreenRouter
 import com.marker.nogle_exam.ui.page.BScreen
 import com.marker.nogle_exam.ui.page.CScreen
-import com.marker.nogle_exam.ui.page.DScreen
 import com.marker.nogle_exam.ui.page.apage.AScreen
+import com.marker.nogle_exam.ui.page.dpage.DScreen
+import com.marker.nogle_exam.ui.page.dpage.setting.SettingScreen
 import com.marker.nogle_exam.ui.theme.Nogle_examTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,13 +39,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val isHideBottomNav = remember { mutableStateOf(false) }
                     val navigationState =
-                        remember { mutableStateOf<BottomNavItem>(BottomNavItem.AScreen) }
+                        remember { mutableStateOf<ScreenRouter>(ScreenRouter.AScreen) }
                     Scaffold(
                         bottomBar = {
-                            BottomNavigation {
-                                navigationState.value = it
-                            }
+                            if (!isHideBottomNav.value)
+                                BottomNavigation {
+                                    navigationState.value = it.router
+                                }
                         },
                     ) { paddingValues ->
                         Column(
@@ -55,25 +58,36 @@ class MainActivity : ComponentActivity() {
                             val navController = rememberNavController()
                             NavHost(
                                 navController = navController,
-                                startDestination = BottomNavItem.AScreen.route
+                                startDestination = ScreenRouter.AScreen.route
                             ) {
-                                composable(BottomNavItem.AScreen.route) {
+                                composable(ScreenRouter.AScreen.route) {
                                     AScreen()
                                 }
-                                composable(BottomNavItem.BScreen.route) {
+                                composable(ScreenRouter.BScreen.route) {
                                     BScreen()
                                 }
-                                composable(BottomNavItem.CScreen.route) {
+                                composable(ScreenRouter.CScreen.route) {
                                     CScreen()
                                 }
-                                composable(BottomNavItem.DScreen.route) {
-                                    DScreen()
+                                composable(ScreenRouter.DScreen.route) {
+                                    DScreen {
+                                        navigationState.value = ScreenRouter.SettingScreen
+                                        isHideBottomNav.value = true
+                                    }
+                                }
+                                composable(ScreenRouter.SettingScreen.route) {
+                                    SettingScreen {
+                                        navController.popBackStack()
+                                        navigationState.value = ScreenRouter.DScreen
+                                        isHideBottomNav.value = false
+                                    }
                                 }
                             }
 
                             MainScreen(navController, navigationState)
                         }
                     }
+
 
                 }
             }
@@ -82,6 +96,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(navController: NavController, navigationState: MutableState<BottomNavItem>) {
-    navController.navigate(navigationState.value.route)
+fun MainScreen(navController: NavController, navigationState: MutableState<ScreenRouter>) {
+    navController.navigate(navigationState.value.route) {
+        popUpTo(navigationState.value.route) {
+            inclusive = true
+        }
+    }
 }
