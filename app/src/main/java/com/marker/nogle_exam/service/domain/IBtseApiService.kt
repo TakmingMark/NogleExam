@@ -1,4 +1,4 @@
-package com.marker.nogle_exam.service
+package com.marker.nogle_exam.service.domain
 
 import com.marker.nogle_exam.data.model.Market
 import retrofit2.http.GET

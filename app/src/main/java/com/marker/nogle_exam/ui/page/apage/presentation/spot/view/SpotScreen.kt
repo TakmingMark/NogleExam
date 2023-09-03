@@ -22,33 +22,34 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun SpotScreen() {
     val viewModel = koinViewModel<SpotViewModel>()
-    val sortedSpotPriceNameListState = remember { mutableStateListOf<String>() }
+    val sortedSpotNameAndPriceListState = remember { mutableStateListOf<Pair<String, String>>() }
 
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(key1 = Unit) {
-        viewModel.fetchSortedSpotPriceNameList()
+        viewModel.fetchSortedSpotNameAndPriceList()
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            viewModel.sortedSpotPriceNameListState.collectLatest {
-                sortedSpotPriceNameListState.addAll(it)
+            viewModel.sortedSpotNameAndPriceListState.collectLatest {
+                sortedSpotNameAndPriceListState.clear()
+                sortedSpotNameAndPriceListState.addAll(it)
             }
         }
     }
 
     LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        items(sortedSpotPriceNameListState.size) {
+        items(sortedSpotNameAndPriceListState.size) {
             Row {
                 Text(
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 30.dp),
-                    text = "Name",
+                    text = sortedSpotNameAndPriceListState[it].first,
                     textAlign = TextAlign.Start
                 )
                 Text(
                     modifier = Modifier
                         .weight(1f)
                         .padding(end = 30.dp),
-                    text = sortedSpotPriceNameListState[it],
+                    text = sortedSpotNameAndPriceListState[it].second,
                     textAlign = TextAlign.End
                 )
             }

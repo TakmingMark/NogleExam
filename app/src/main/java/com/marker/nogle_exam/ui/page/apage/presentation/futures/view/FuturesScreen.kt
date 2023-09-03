@@ -22,33 +22,35 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun FuturesScreen() {
     val viewModel = koinViewModel<FuturesViewModel>()
-    val sortedFuturesPriceNameListState = remember { mutableStateListOf<String>() }
+    val sortedFuturesNameAndPriceListState = remember { mutableStateListOf<Pair<String, String>>() }
 
     val lifecycleOwner = LocalLifecycleOwner.current
     LaunchedEffect(key1 = Unit) {
-        viewModel.fetchSortedFuturesPriceNameList()
+        viewModel.fetchSortedFuturesNameAndPriceList()
+
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            viewModel.sortedFuturesPriceNameListState.collectLatest {
-                sortedFuturesPriceNameListState.addAll(it)
+            viewModel.sortedFuturesNameAndPriceListState.collectLatest {
+                sortedFuturesNameAndPriceListState.clear()
+                sortedFuturesNameAndPriceListState.addAll(it)
             }
         }
     }
 
     LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        items(sortedFuturesPriceNameListState.size) {
+        items(sortedFuturesNameAndPriceListState.size) {
             Row {
                 Text(
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 30.dp),
-                    text = "Name",
+                    text = sortedFuturesNameAndPriceListState[it].first,
                     textAlign = TextAlign.Start
                 )
                 Text(
                     modifier = Modifier
                         .weight(1f)
                         .padding(end = 30.dp),
-                    text = sortedFuturesPriceNameListState[it],
+                    text = sortedFuturesNameAndPriceListState[it].second,
                     textAlign = TextAlign.End
                 )
             }
